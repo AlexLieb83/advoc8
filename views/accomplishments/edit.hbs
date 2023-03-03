@@ -1,0 +1,43 @@
+<h3>Edit Accomplishment</h3>
+<div class="row">
+  <form
+    action="/accomplishments/{{accomplishment._id}}"
+    method="post"
+    class="col s12"
+  >
+    <input type="hidden" name="_method" value="PUT" />
+    <div class="row">
+      <div class="input-field">
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value="{{accomplishment.title}}"
+        />
+        <label for="title">Accomplishment Title</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field">
+        <h5>Talk Highly of Yourself:</h5>
+        <textarea name="body" id="body">{{accomplishment.body}}</textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <button
+        class="btn waves-effect waves-light green darken-2"
+        type="submit"
+        name="action"
+      >Save
+        <i class="fa-regular fa-paper-plane right"></i>
+      </button>
+
+      <a
+        href="/dashboard"
+        class="btn red darken-1 waves-effect waves-light btn-margin"
+      >Cancel<i class="fa-regular fa-trash-can right"></i></a>
+    </div>
+  </form>
+</div>

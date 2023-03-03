@@ -1,0 +1,42 @@
+<h6>Dashboard</h6>
+<h3 class="center-align">Welcome {{name}}</h3>
+<p class="center-align">Here are your accomplishments</p>
+{{#if accomplishments}}
+  <table class="striped centered">
+    <thead>
+      <tr>
+        <th>Accomplishment</th>
+        <th>Date</th>
+        <th>Edit/Delete</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each accomplishments}}
+        <tr>
+          <td><a href="/accomplishments/{{_id}}">{{title}}</a></td>
+          <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
+          <td>
+            <a href="/accomplishments/edit/{{_id}}" class="btn green darken-2">
+              <i class="fas fa-edit"></i>
+            </a>
+
+            <form
+              action="/accomplishments/{{_id}}"
+              method="POST"
+              id="delete-form"
+            >
+              <input type="hidden" name="_method" value="DELETE" />
+              <button type="submit" class="trash btn red darken-4">
+                <i class="fas fa-trash"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+{{else}}
+  <p>You have not added any accomplishments</p>
+{{/if}}
